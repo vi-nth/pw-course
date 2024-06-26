@@ -5,7 +5,7 @@ let numberInput = readline.question('Number input: ');
 /**
  *  Using 4/2
  */
-let result = numberInput / 2
+let result = numberInput / 2;
 console.log(`Result: ${result}`);
 
 if (Number.isInteger(result)) {
@@ -18,7 +18,7 @@ if (Number.isInteger(result)) {
  * Using 4%2
  */
 
-result = numberInput % 2
+result = numberInput % 2;
 console.log(`Result: ${result}`);
 
 if (result === 0) {

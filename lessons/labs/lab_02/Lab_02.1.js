@@ -7,6 +7,9 @@ let weight = readline.question('Your weight: ');
 let BMI = weight / (height * 2);
 console.log(`BMI: ${BMI}`);
 
+/**
+ * First approach
+ */
 if (BMI < 18.5) {
     console.log('Status: Underweight');
 } else if (BMI >= 18.5 && BMI <= 24.9) {
@@ -16,3 +19,16 @@ if (BMI < 18.5) {
 } else {
     console.log('Status: Obesity');
 }
+
+/**
+ * Second approach
+ */
+if (BMI < 24.9) {
+    let status = BMI < 18.5 ? "Underweight" : "Normalweight";
+    console.log("Status: " + status)
+} else if (BMI >= 25 && BMI <= 29.9) {
+    console.log('Status: Overweight');
+} else {
+    console.log('Status: Obesity');
+}
+
