@@ -26,7 +26,7 @@ if (BMI < 18.5) {
 if (BMI <= 24.9) {
     let status = BMI < 18.5 ? "Underweight" : "Normalweight";
     console.log("Status: " + status);
-} else if (BMI >= 25 && BMI <= 29.9) {
+} else if (BMI <= 29.9) {
     console.log('Status: Overweight');
 } else {
     console.log('Status: Obesity');
