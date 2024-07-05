@@ -1,18 +1,39 @@
 const readline = require('readline-sync');
+// const UtilMethods = require('../../day-05/UtilMethods');
+const {getWeight, getHeight} = require('../../day-05/UtilMethods')
 
 //Lab_2.3
 let height = readline.question('Your height: ');
 let weight = readline.question('Your weight: ');
 
-let BMI = weight / (height * 2);
-console.log(`BMI: ${BMI}`);
+const currentBMI = weight / (height ** height);
+console.log(`BMI: ${currentBMI}`);
 
-if (BMI <= 24.9) {
-    let status = BMI < 18.5 ? "Underweight" : "Normalweight";
-    let message = BMI < 18.5 ? "You should increase weight at least: " + (18.5 - BMI) : "Your weight is in the good range";
-    console.log("Status: " + status + "\n" +"Message: "+ message );
-} else  {
-    let status = BMI >= 30 ? "Obesity" : "Overweight";
-    console.log("Status: " + status);
-    console.log("You should decrease weight by about: " + (BMI - 24.9));
+const minBMI = 18.5;
+const maxBMI = 24.9;
+const overweightBMI = 29.9;
+
+
+/**
+ *  weight = BMI * (height**height)
+ */
+
+if (currentBMI < minBMI) {
+    const gainingWeight = getWeight(currentBMI, minBMI, height);
+    console.log(`You are underweight!. You must increase at least ${gainingWeight} (kg)`);
+} else if (currentBMI <= 24.9) {
+    console.log(`You are in the good health, keep it up!`);
+} else if (currentBMI >= 29.9) {
+    const losingWeight = getWeight(currentBMI, maxBMI, height);
+    console.log(`You are overweight. You must decrease about ${losingWeight} (kg)`);
+} else {
+    const lossingWeight = getWeight(currentBMI, overweightBMI, height);
+    console.log(`Your are obesity. You must decrease at least ${lossingWeight} (kg)`);
 }
+
+// function getWeight(currentBMI, standardBMI, height) {
+//     const weight = (currentBMI - standardBMI) * (height * height);
+//     return Math.abs(weight);
+// }
+
+
