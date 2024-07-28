@@ -45,34 +45,56 @@ function isAccountExisting(accountNumInput) {
         }
     }
     console.log(`Account number: ${accountNumInput} is not existing. Please try again.`);
+    return false;
 }
 
 function findAnAccountInSystem(accountNumInput) {
     const balanceOfAccount = getBalance(accountNumInput);
-    console.log(`Account number: ${accountNumInput}\nBalance: ${balanceOfAccount}`);
+    console.log(`1. Find an account:\n  Account number: ${accountNumInput}\n  Balance: ${balanceOfAccount}`);
     return [accountNumInput, balanceOfAccount];
 }
 
 function getBalance(accountNumInput) {
     for (const bankAccount of bankAccounts) {
-        if (bankAccount.accountNumber = accountNumInput) {
+        if (bankAccount.accountNumber == accountNumInput) {
             return bankAccount.balance;
         }
     }
+    return 0;
 }
 
 function updateBalanceInSytem(accountNumInput) {
-    let withdrawMoney = readline.question(`Draw money: `);
-    let currentBalance = getBalance(accountNumInput);
-    console.log(`Balance of account: ${currentBalance}`);
+    for (const bankAccount of bankAccounts) {
+        if (bankAccount.accountNumber == accountNumInput) {
+            let currentBalance = bankAccount.balance;
 
-    if (withdrawMoney >= getBalance(accountNumInput)) {
-        return console.log(`You can not withdraw money more than current balance, your current balance: ${currentBalance}`);
-    } else {
-        currentBalance = currentBalance - withdrawMoney;
+            while (currentBalance > 0) {
+                let withdrawMoney = readline.question(`Draw money: `);
+
+                if (currentBalance > withdrawMoney) {
+                    let remainingBalance = currentBalance - withdrawMoney;
+                    currentBalance = remainingBalance;
+                    console.log(`2. Update balance: Your current balance: ${currentBalance}`);
+                    let confirm = readline.question(`Do you want to continue withdrawing money?`)
+
+                    if (confirm === 'No') {
+                        console.log(`2. Update balance:\n  Stop withdrawing money\n  Your current balance: ${currentBalance}`);
+                        return currentBalance;
+                    } else {
+                        continue;
+                    }
+                } else {
+                    return console.log(`You can not withdraw money more than current balance, your current balance: ${currentBalance}`);
+                    break;
+                }
+            }
+
+        }
+
     }
-    return console.log(`Your current balance: ${currentBalance}`);
 }
+
+
 
 
 
