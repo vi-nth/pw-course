@@ -3,7 +3,7 @@ const Employee = require("./Employee");
 const SalaryController = require("./SalaryController");
 
 // user-defined data - model
-const an = new Employee(800);
+const an = new Employee(-800);
 const binh = new Employee(1000);
 
 // Init controller
