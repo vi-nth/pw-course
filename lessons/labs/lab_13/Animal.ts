@@ -1,29 +1,19 @@
 export class Animal {
 
     protected name: string;
-    protected maxSpeed: number;
+    protected randomSpeed: number;
 
     constructor(name : string, maxSpeed: number) {
         this.name = name;
-        this.maxSpeed = maxSpeed;
+        this.randomSpeed = Math.floor(Math.random() * maxSpeed) + 1;
     }
 
-    getRandomSpeed(maxSpeed : number) {
-        return Math.floor(Math.random() * maxSpeed) + 1;
+    getRandomSpeed() {
+        return this.randomSpeed;
     }
 
-    getWinerAnimal(listAnimals: Animal[]) {
-        let winerAnimal: string = "";
-        let winerSpeed: number = 0;
-
-        for (let animal of listAnimals) {
-            let randomSpeed = this.getRandomSpeed(animal.maxSpeed);
-            if (randomSpeed > winerSpeed) {
-                winerSpeed = randomSpeed;
-                winerAnimal = animal.name;
-            }
-        }
-        return console.log(`Winner is ${winerAnimal}, with speed: ${winerSpeed}`);
+    getAnimalName(){
+        return this.name;
     }
 
 }

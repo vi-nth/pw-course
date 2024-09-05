@@ -1,12 +1,12 @@
-import { Animal } from "./Animal";
+import { AnimalController } from "./AnimalController";
 import { Dog } from "./Dog";
 import { Horse } from "./Horse";
 import { Tiger } from "./Tiger";
 
-let animal: Animal = new Animal("", 0);
+let animalController: AnimalController = new AnimalController();
 
-let dog: Dog = new Dog("Dog", 60);
-let horse: Horse = new Horse("Horse", 75);
-let tiger: Tiger = new Tiger("Tiger", 100);
+let dog: Dog = new Dog("Dog");
+let horse: Horse = new Horse("Horse");
+let tiger: Tiger = new Tiger("Tiger");
 
-animal.getWinerAnimal([dog, horse, tiger]);
+animalController.getWinerAnimal([dog, horse, tiger]);
