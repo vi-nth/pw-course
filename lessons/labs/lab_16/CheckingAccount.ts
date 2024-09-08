@@ -10,10 +10,12 @@ export class CheckingAccount extends BankingAccount {
     }
 
     deposit(amount: number): void {
+        this.validateAmount(amount);
         this.balance += amount;
     }
 
     withdraw(amount: number): void {
+        this.validateAmount(amount);
         if ((this.balance - amount) >= this.overdraftLimit) {
             this.balance = this.balance - amount;
         } else {

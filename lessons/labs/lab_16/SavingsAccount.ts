@@ -10,10 +10,12 @@ export class SavingsAccount extends BankingAccount {
     }
 
     deposit(amount: number): void {
+        this.validateAmount(amount);
         this.balance += amount;
     }
 
     withdraw(amount: number): void {
+        this.validateAmount(amount);
         if ((this.balance - amount) >= this.minimumBalance) {
             this.balance = this.balance - amount;
         } else {

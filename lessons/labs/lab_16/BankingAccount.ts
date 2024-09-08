@@ -15,7 +15,7 @@ export abstract class BankingAccount {
 
     validateAmount(amount: number) {
         if (amount <= 0) {
-            console.log(`Amount must be > 0`);
+            throw new Error(`Amount must be > 0`);
         }
     }
 
